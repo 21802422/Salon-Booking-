@@ -1,8 +1,7 @@
-<div class="container">
-  <app-login *ngIf="showSignup"></app-login>
-  <app-signup *ngIf="showSignup"></app-signup>
-  <app-booking-page></app-booking-page>
-  <app-appointment-search></app-appointment-search>
 
+<div fxLayout="column" fxLayoutAlign="center center" style="text-align: center;">
+  <h1 style="font-size: 4rem;">Booking System</h1>
 </div>
-<app-booking-page></app-booking-page>
+
+<router-outlet></router-outlet>
+
