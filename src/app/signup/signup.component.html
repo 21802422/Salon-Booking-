@@ -1,0 +1,25 @@
+<h2 style="font-size: 24px;">Sign Up</h2>
+<div>
+  <mat-form-field style="width: 300px;">
+    <input matInput placeholder="Name" [(ngModel)]="name" required style="font-size: 18px;"> 
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field style="width: 300px;">
+    <input matInput placeholder="Email" [(ngModel)]="email" required style="font-size: 18px;">
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field style="width: 300px;">
+    <input matInput placeholder="Cellphone" [(ngModel)]="cellphone" required style="font-size: 18px;">
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field style="width: 300px;">
+    <input matInput type="password" placeholder="Password" [(ngModel)]="password" required style="font-size: 18px;">
+  </mat-form-field>
+</div>
+<div>
+  <button mat-raised-button color="primary" (click)="signup()" style="font-size: 18px;">Sign Up</button>
+  <button mat-button (click)="goToLogin()" style="font-size: 18px;">Login</button>
+</div>

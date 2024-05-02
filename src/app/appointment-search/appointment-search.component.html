@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Search for booked appointments" [(ngModel)]="searchTerm">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="search()">Search</button>
+    </mat-card-content>
+  </mat-card>
+  
+  <mat-card *ngIf="appointment">
+    <mat-card-content>
+      <h3>{{ appointment.name }}</h3>
+      <p>{{ appointment.date }}</p>
+      <button mat-raised-button color="warn" (click)="cancelAppointment()">Cancel Booking</button>
+      <button mat-raised-button color="primary" (click)="rescheduleAppointment()">Reschedule</button>
+    </mat-card-content>
+  </mat-card>
+  
