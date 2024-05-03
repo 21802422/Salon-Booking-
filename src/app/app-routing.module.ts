@@ -6,6 +6,7 @@ import { BookingPageComponent } from './booking-page/booking-page.component';
 import { AppointmentSearchComponent } from './appointment-search/appointment-search.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'booking-page', component: BookingPageComponent },
