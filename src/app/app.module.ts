@@ -18,6 +18,9 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { BookingPageComponent } from './booking-page/booking-page.component';
 import { AppointmentSearchComponent } from './appointment-search/appointment-search.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { AppointmentSearchComponent } from './appointment-search/appointment-sea
     LoginComponent,
     SignupComponent,
     BookingPageComponent,
-    AppointmentSearchComponent
+    AppointmentSearchComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ import { AppointmentSearchComponent } from './appointment-search/appointment-sea
     MatSelectModule,
     MatCardModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

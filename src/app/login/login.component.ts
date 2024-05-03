@@ -21,4 +21,7 @@ registrationStatus: any;
   goToSignUp() {
     this.router.navigate(['/signup']);
   }
+  goForgotPassword() {
+    this.router.navigate(['/forgotPassword']);
+    }
 }
