@@ -9,8 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -20,6 +19,7 @@ import { BookingPageComponent } from './booking-page/booking-page.component';
 import { AppointmentSearchComponent } from './appointment-search/appointment-search.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
 
 
 @NgModule({
@@ -42,7 +42,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     MatCardModule,
     RouterModule,
     AppRoutingModule,
-    MatToolbarModule
+    MatToolbarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
