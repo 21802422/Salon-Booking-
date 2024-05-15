@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -26,29 +27,32 @@ export class SignupComponent implements OnInit {
     this.signUpForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      cellphone: ['', Validators.required],
+      cellphone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       password: ['', Validators.required]
     });
   }
 
   signup() {
-    console.log('Sign Up:', this.name, this.email, this.cellphone, this.password);
-    this.registrationStatus = 'Successfully registered';
-
     if (this.signUpForm.valid) {
+      console.log('Sign Up:', this.name, this.email, this.cellphone, this.password);
+      this.registrationStatus = 'Successfully registered';
+  
       this.auth.signup(this.signUpForm.value).subscribe({
         next: (res) => {
           alert(res.message);
           this.signUpForm.reset();
-          this.router.navigate(['login'])
+          this.router.navigate(['login']);
         },
         error: (err) => {
           alert(err?.error.message);
         }
       });
+    } else {
+      // Form is not valid, display an error message or prevent the API call
+      alert('Please fill in all the required fields.');
     }
   }
-
+  
   goToLogin() {
     this.router.navigate(['/login']);
   }

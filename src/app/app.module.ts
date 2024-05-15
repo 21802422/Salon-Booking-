@@ -9,8 +9,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-
+import { HttpClientModule,  HttpBackend } from '@angular/common/http';
+import { FetchBackend, provideHttpClient } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -19,6 +19,7 @@ import { BookingPageComponent } from './booking-page/booking-page.component';
 import { AppointmentSearchComponent } from './appointment-search/appointment-search.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -29,7 +30,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     SignupComponent,
     BookingPageComponent,
     AppointmentSearchComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -43,9 +45,16 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     RouterModule,
     AppRoutingModule,
     MatToolbarModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+    provide: HttpBackend,
+    useClass: FetchBackend,
+    },
+    provideHttpClient(),
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -21,7 +21,6 @@ export class LoginComponent {
   });}
 
   login() {
-    console.log('Login:', this.email, this.password);
     if(this.loginForm.valid){
       this.auth.login(this.loginForm.value)
       .subscribe({

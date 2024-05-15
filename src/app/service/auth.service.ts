@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpBackend, HttpClient, provideHttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FetchBackend } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   
   private baseUrl:string = "https://localhost:7260/api/User/"
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient , private httpBackend: HttpBackend) { this.http = new HttpClient(httpBackend); }
 
   signup(userObj:any){
     return this.http.post<any>(`${this.baseUrl}register`,userObj);
@@ -17,3 +19,4 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}authenticate`,loginObj);
   }
 }
+provideHttpClient();

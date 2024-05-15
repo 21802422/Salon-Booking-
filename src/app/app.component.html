@@ -1,6 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="container">
-  <mat-toolbar color="primary" style="text-align: center;">
-    <span style="font-size: 3rem;" >Welcome to My Store</span>
+  <mat-toolbar color="primary" style="display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-size: 3rem;">Welcome to My Store</span>
+    <button mat-button (click)="logout()">Logout</button>
   </mat-toolbar>
   <router-outlet></router-outlet>
 </div>
