@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './booking-page.component.css'
 })
 export class BookingPageComponent {
+  constructor(private router: Router) { }
 
+  navigateToSearch(){
+    this.router.navigate(['appointemnt-Search']);
+  }
 }

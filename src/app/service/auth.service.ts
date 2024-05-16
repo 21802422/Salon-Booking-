@@ -1,7 +1,5 @@
 import { HttpBackend, HttpClient, provideHttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FetchBackend } from '@angular/common/http';
-
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +16,13 @@ export class AuthService {
   login(loginObj:any){
     return this.http.post<any>(`${this.baseUrl}authenticate`,loginObj);
   }
+  forgotPassword(email: string, newPassword: string) {
+    const resetPasswordData = {
+      email: email,
+      password: newPassword
+    };
+
+    return this.http.post<any>(`${this.baseUrl}forgotpassword`, resetPasswordData);
+  }
 }
-provideHttpClient();
+

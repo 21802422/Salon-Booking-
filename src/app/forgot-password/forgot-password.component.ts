@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -10,11 +11,22 @@ export class ForgotPasswordComponent {
   email: string ="";
   newPassword: string="";
   confirmPassword: string="";
+  
+ 
+  constructor(private authService: AuthService, private router: Router, ) { }
 
   resetPassword() {
-    // Add your password reset logic here
-    console.log('Email:', this.email);
-    console.log('New Password:', this.newPassword);
-    console.log('Confirm Password:', this.confirmPassword);
+    if (this.newPassword !== this.confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+
+    this.authService.forgotPassword(this.email, this.newPassword).subscribe(
+      () => {
+        alert('Password reset successful');
+       this.router.navigate(['login']);
+        
+      }
+    );
   }
 }
