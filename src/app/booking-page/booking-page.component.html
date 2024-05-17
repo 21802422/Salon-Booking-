@@ -9,9 +9,23 @@
 
 <form>
   <div>
+    <mat-form-field style="width: 300px;">
+      <mat-label>Hairstyle Type</mat-label>
+      <mat-select [(ngModel)]="HairstyleType" name="HairstyleType">
+        <mat-option value="freehand">Freehand</mat-option>
+        <mat-option value="straight-back">Straight Back</mat-option>
+        <mat-option value="straight-up">Straight Up</mat-option>
+        <mat-option value="knotless-braids">Knotless Braids</mat-option>
+        <mat-option value="normal-braids">Normal Braids</mat-option>
+        <mat-option value="tribal-braids">Cornrows Braids</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <div>
   <mat-form-field style="width: 300px;">
     <mat-label>Time Slot</mat-label>
-    <mat-select>
+    <mat-select  [(ngModel)]="TimeSlot" name="TimeSlot">
       <mat-option value="8:00AM">8:00AM</mat-option>
       <mat-option value="12:00PM">12:00PM</mat-option>
     </mat-select>
@@ -20,19 +34,16 @@
   
 <div>
   <mat-form-field style="width: 300px;">
-    <mat-label>Size</mat-label>
-    <mat-select placeholder="Select braiding size">
-      <mat-option value="small">Small</mat-option>
-      <mat-option value="medium">Medium</mat-option>
-      <mat-option value="large">Large</mat-option>
-    </mat-select>
+    <mat-label>Appointment Date</mat-label>
+    <input matInput type="date"  [(ngModel)]="AppointmentDate" name="AppointmentDate" placeholder="Select appointment date" min="yyyy-mm-dd" max="yyyy-mm-dd">
   </mat-form-field>
 </div>
+
 
 <div>
   <mat-form-field style="width: 300px;">
     <mat-label>Length</mat-label>
-    <mat-select placeholder="how long your length">
+    <mat-select [(ngModel)]="Length" name="Length" placeholder="how long your length">
       <mat-option value="short">Short</mat-option>
       <mat-option value="medium">Medium</mat-option>
       <mat-option value="long">Long</mat-option>
@@ -42,25 +53,11 @@
 
 <div>
   <mat-form-field style="width: 300px;">
-    <mat-label>Hairstyle Type</mat-label>
-    <mat-select>
-      <mat-option value="freehand">Freehand</mat-option>
-      <mat-option value="straight-back">Straight Back</mat-option>
-      <mat-option value="straight-up">Straight Up</mat-option>
-      <mat-option value="knotless-braids">Knotless Braids</mat-option>
-      <mat-option value="normal-braids">Normal Braids</mat-option>
-      <mat-option value="tribal-braids">Cornrows Braids</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-
-<div>
-  <mat-form-field style="width: 300px;">
     <mat-label>Price</mat-label>
-    <input matInput type="text" readonly>
+    <input matInput [(ngModel)]="price" name="Price" type="text" [value]="calculatePrice()" readonly>
   </mat-form-field>
 </div>
 
-  <button style="height: 50px; width: 160px;" mat-raised-button color="primary">Book Now</button>
+  <button style="height: 50px; width: 160px;" (click)="bookNow()" mat-raised-button color="primary">Book Now</button>
 </form>
 </div>
