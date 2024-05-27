@@ -11,6 +11,9 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule,  HttpBackend } from '@angular/common/http';
 import { FetchBackend, provideHttpClient } from '@angular/common/http';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -46,7 +49,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     MatToolbarModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+
   ],
   providers: [
     {

@@ -27,8 +27,9 @@ export class LoginComponent {
         next:(res)=>{
           alert(res.message);
           this.loginForm.reset();
+          localStorage.setItem('userId', res.id);
+          localStorage.setItem('username', res.name);
           this.router.navigate(['booking-page'])
-          
         },
         error:(err)=>{
           alert(err?.error.message)

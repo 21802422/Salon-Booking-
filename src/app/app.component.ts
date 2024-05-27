@@ -14,4 +14,7 @@ export class AppComponent {
   logout(){
     this.router.navigate(['/login']);
   }
+  navigateToAppointments(){
+    this.router.navigate(['appointemnt-Search']);
+  }
 }

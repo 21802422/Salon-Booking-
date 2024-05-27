@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookingService } from '../service/booking.service';
-
+import { Appointment } from '../models/Appointment';
 
 @Component({
   selector: 'app-booking-page',
@@ -13,45 +13,59 @@ export class BookingPageComponent {
   TimeSlot: string = "";
   AppointmentDate: Date = new Date();
   Length: string = "";
-  price: number | undefined;
-  appointmentData: any={};
+  price: number = 0;
+  appointmentData = {} as Appointment;
+  userId: number = 0;
+  username: string = '';
 
   ngOnInit() {
-    this. appointmentData= {
+    const localStorageAvailable = typeof localStorage !== 'undefined';
+
+    if (localStorageAvailable) {
+      this.username = localStorage.getItem('username') ?? '';
+      this.userId = Number(localStorage.getItem('userId'));
+    }
+
     // Populate appointment data based on the form inputs
-    hairstyleType: this.HairstyleType,
-    timeSlot: this.TimeSlot,
-    appointmentDate: this.AppointmentDate,
-    length: this.Length,
-    price: this.price
+    this. appointmentData.hairstyleType = this.HairstyleType,
+    this. appointmentData.timeSlot = this.TimeSlot,
+    this. appointmentData.appointmentDate = new Date(this.AppointmentDate.getFullYear(), this.AppointmentDate.getMonth(), this.AppointmentDate.getDate()),
+    this. appointmentData.length = this.Length,
+    this. appointmentData.price = this.price,
+    this. appointmentData.userId = this.userId
   };
-}
 
   constructor(private router: Router, private booking: BookingService) { }
 
-  navigateToSearch(){
-    this.router.navigate(['appointemnt-Search']);
-  }
+  // navigateToSearch(){
+  //   this.router.navigate(['appointemnt-Search']);
+  // }
   bookNow() {
     this.price = this.calculatePrice();
-    this. appointmentData= {
       // Populate appointment data based on the form inputs
-      hairstyleType: this.HairstyleType,
-      timeSlot: this.TimeSlot,
-      appointmentDate: this.AppointmentDate,
-      length: this.Length,
-      price: this.price
-    };
+      this. appointmentData.hairstyleType = this.HairstyleType,
+      this. appointmentData.timeSlot = this.TimeSlot,
+      this. appointmentData.appointmentDate = this.AppointmentDate,
+      this. appointmentData.length = this.Length,
+      this. appointmentData.price = this.price,
+      this. appointmentData.userId = this.userId
+
     this.booking.createAppointment(this.appointmentData).subscribe({
       next: (res) => {
-        alert(res.message);
-        this.appointmentData.reset();
+        alert(res);
+        console.log(res)
+        this.reset();
       },
       error: (err) => {
         alert(err?.error.message);
       }
     });
   }
+
+  reset(){
+
+  }
+
   calculatePrice() {
     let price = 0;
   
