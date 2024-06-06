@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookingService } from '../service/booking.service';
 import { Appointment } from '../models/Appointment';
+import { MatDialog } from '@angular/material/dialog';
+import { InfomartiveComponentComponent } from '../infomartive-component/infomartive-component.component';
 
 @Component({
   selector: 'app-booking-page',
@@ -35,7 +37,7 @@ export class BookingPageComponent {
     this. appointmentData.userId = this.userId
   };
 
-  constructor(private router: Router, private booking: BookingService) { }
+  constructor(private router: Router, private booking: BookingService, private dialog: MatDialog) { }
 
   // navigateToSearch(){
   //   this.router.navigate(['appointemnt-Search']);
@@ -52,8 +54,9 @@ export class BookingPageComponent {
 
     this.booking.createAppointment(this.appointmentData).subscribe({
       next: (res) => {
-        alert(res);
+        alert("Appointment Created Successfully");
         console.log(res)
+        this.openDialog(this.appointmentData);
         this.reset();
       },
       error: (err) => {
@@ -61,9 +64,24 @@ export class BookingPageComponent {
       }
     });
   }
+   
+  openDialog(appointmentData: any): void {
+    const dialogRef = this.dialog.open(InfomartiveComponentComponent, {
+      data: appointmentData,
+      panelClass: 'InfomartiveComponentComponent'
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Handle any actions after the dialog is closed
+    });
+  }
 
   reset(){
-
+    this.HairstyleType = '';
+    this.TimeSlot = '';
+    this.AppointmentDate = new Date();
+    this.Length = '';
+    this.price = 0;
   }
 
   calculatePrice() {

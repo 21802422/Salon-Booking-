@@ -14,6 +14,9 @@ export class AppComponent {
   logout(){
     this.router.navigate(['/login']);
   }
+  isLoginPage(): boolean {
+    return this.router.url === '/login';
+  }
   navigateToAppointments(){
     this.router.navigate(['appointemnt-Search']);
   }

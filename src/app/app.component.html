@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="container">
   <mat-toolbar color="primary" style="display: flex; justify-content: space-between; align-items: center;">
     <span style="font-size: 3rem;">Welcome to My Store</span>
-    <div fxLayout="row">
+    <div fxLayout="row" *ngIf="!isLoginPage()">
       <button mat-button (click)="logout()">Logout</button>
       <button mat-button (click)="navigateToAppointments()">My Appointments</button>
     </div>

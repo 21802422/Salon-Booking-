@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Booking Details</h2>
+
+<mat-dialog-content>
+  <p>Please screenshot this detail</p>
+
+  <p>Hairstyle Type: {{ data.hairstyleType }}</p>
+  <p>Time Slot: {{ data.timeSlot }}</p>
+  <p>Appointment Date: {{ data.appointmentDate }}</p>
+  <p>Length: {{ data.length }}</p>
+  <p>Price: {{ data.price }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()">Close</button>
+</mat-dialog-actions>

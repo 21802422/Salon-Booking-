@@ -23,8 +23,9 @@ import { AppointmentSearchComponent } from './appointment-search/appointment-sea
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { InfomartiveComponentComponent } from './infomartive-component/infomartive-component.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BookingPageComponent,
     AppointmentSearchComponent,
     ForgotPasswordComponent,
+    InfomartiveComponentComponent,
+    
     
   ],
   imports: [
@@ -51,7 +54,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule, 
+    MatIconModule
+    
 
   ],
   providers: [

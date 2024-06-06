@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,6 +14,8 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   registrationStatus: any;
+  public hidePassword = true;
+
 
   constructor(private router: Router, private auth: AuthService, private formBuilder: FormBuilder )
    {  this.loginForm = this.formBuilder.group({
@@ -25,7 +28,7 @@ export class LoginComponent {
       this.auth.login(this.loginForm.value)
       .subscribe({
         next:(res)=>{
-          alert(res.message);
+          //alert(res.message);
           this.loginForm.reset();
           localStorage.setItem('userId', res.id);
           localStorage.setItem('username', res.name);
